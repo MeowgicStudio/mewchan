@@ -397,6 +397,51 @@ async function aiSend(){
   }
 }
 
+// ==================== MOBILE KEYBOARD FIX ====================
+function initMobileKeyboardFix(){
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(!isMobile) return;
+
+  const popup = document.getElementById('ai-popup');
+  const input = document.getElementById('ap-input');
+
+  // เมื่อ keyboard ขึ้น
+  input.addEventListener('focus', () => {
+    setTimeout(() => {
+      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const fullH = window.screen.height;
+      const keyboardH = fullH - vh;
+
+      if(keyboardH > 100){
+        // keyboard ขึ้นแล้ว ให้ popup ขยับขึ้น
+        popup.style.bottom = keyboardH + 'px';
+        popup.style.height = (vh * 0.55) + 'px';
+      }
+    }, 300);
+  });
+
+  // เมื่อ keyboard ลง
+  input.addEventListener('blur', () => {
+    setTimeout(() => {
+      popup.style.bottom = '0px';
+      popup.style.height = '50vh';
+    }, 200);
+  });
+
+  // ใช้ visualViewport API ถ้ามี (แม่นยำกว่า)
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize', () => {
+      if(!aiOpen) return;
+      const vh = window.visualViewport.height;
+      const offsetY = window.visualViewport.offsetTop;
+      popup.style.bottom = '0px';
+      popup.style.top = 'auto';
+      popup.style.height = (vh * 0.55) + 'px';
+      popup.style.transform = 'none';
+    });
+  }
+}
+
 // ==================== INIT ====================
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('ap-input').addEventListener('keydown', e => {
@@ -404,4 +449,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   initResize();
   initDrag();
+  initMobileKeyboardFix();
 });
