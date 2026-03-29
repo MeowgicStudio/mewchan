@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MewChan — AI Companion · Meowgic</title>
+<link rel="icon" type="image/jpg" href="Logo.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="petals"></div>
+
+<!-- AI ORB -->
+<div id="ai-orb" onclick="toggleAI()">
+  <div class="orb-halo"></div>
+  <div class="orb-sphere">
+    <div class="orb-ring or1"></div>
+    <div class="orb-ring or2"></div>
+    <div class="orb-ring or3"></div>
+    <div class="orb-core-icon">✦</div>
+  </div>
+  <div class="orb-label">ถามเกี่ยวกับ MewChan</div>
+</div>
+
+<!-- AI POPUP -->
+<div id="ai-popup">
+  <div id="ap-resize-handle"></div>
+  <div class="ap-header">
+    <div class="ap-avatar">✦</div>
+    <div>
+      <div class="ap-name">MewChan AI</div>
+      <div class="ap-sub">ถามได้เลย หรือพิมว่า "แนะนำทุกหน้า"</div>
+    </div>
+    <button class="ap-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="ap-msgs" id="ap-msgs">
+    <div class="apmsg ai"><div class="apbubble">สวัสดีค่ะ~ 🌸 จะถามเรื่อง MewChan หรือจะให้พาทัวร์เว็บก็ได้นะคะ!</div></div>
+  </div>
+  <div class="ap-input-row">
+    <input id="ap-input" type="text" placeholder="เช่น: แนะนำทุกหน้า / ไปหน้าระบบ / คุยเล่น" autocomplete="off"/>
+    <button onclick="aiSend()">↑</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="photo/Meowgic.png" alt="Meowgic Logo">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#expressions">Expressions</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#persona">Persona</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">ติดต่อเรา</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-circles"><div class="hc1"></div><div class="hc2"></div><div class="hc3"></div></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Meowgic · AI Companion Project</div>
+      <h1 class="hero-title">
+        <span class="accent">Mew</span>Chan
+        <span class="small">She remembers. She feels. She grows.</span>
+      </h1>
+      <p class="hero-desc">ตัวละคร AI ที่ไม่ใช่แค่โปรแกรม — MewChan มีอารมณ์ที่เปลี่ยนแปลง ความทรงจำที่สะสม และบุคลิกที่พัฒนาไปตามผู้ใช้แต่ละคน ขับเคลื่อนด้วย Live2D + AI Brain บน Unity</p>
+      <div class="hero-tags">
+        <span class="htag">Live2D Model</span>
+        <span class="htag">Emotion Engine</span>
+        <span class="htag">Memory System</span>
+        <span class="htag">Unity + C#</span>
+        <span class="htag">LLM Brain</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#expressions" class="btn-primary">ดู Expression ทั้งหมด</a>
+        <a href="#features" class="btn-ghost">ระบบ AI</a>
+      </div>
+    </div>
+    <div class="hero-model">
+      <div class="model-glow"></div>
+      <img class="model-img" src="photo/mew.png" alt="MewChan Model">
+    </div>
+  </div>
+</section>
+
+<!-- EXPRESSIONS SLIDER -->
+<section id="expressions" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
+  <div class="sec">
+    <div class="reveal"><div class="sec-label">Expressions</div></div>
+    <div class="reveal d1"><h2 class="sec-title">อารมณ์ที่หลากหลาย</h2></div>
+    <div class="reveal d2"><p class="sec-sub">MewChan แสดงออกได้หลายอารมณ์ผ่าน Live2D model ที่ออกแบบมาเป็นพิเศษ</p></div>
+
+    <div class="expr-slider-wrap reveal">
+      <div class="expr-slider" id="expr-slider">
+
+        <div class="expr-slide active" data-idx="0">
+          <div class="expr-img-box">
+            <img src="photo/Normal.png" alt="Mew-chan Normal Expression">
+          </div>
+          <div class="expr-info">
+            <div class="expr-num">01 / 05</div>
+            <span class="expr-emoji-big">😊</span>
+            <div class="expr-name">Normal</div>
+            <p class="expr-desc">สภาวะปกติของ MewChan — อบอุ่น พร้อมรับฟัง และเป็นกันเอง เป็นอารมณ์เริ่มต้นก่อนการปฏิสัมพันธ์</p>
+            <div class="expr-trigger"><span>Warmth สูง</span><span>Trust ปกติ</span><span>เริ่มต้น</span></div>
+          </div>
+        </div>
+
+        <div class="expr-slide" data-idx="1">
+          <div class="expr-img-box">
+            <img src="photo/Annoyed.png" alt="Mew-chan Annoyed Expression">
+          </div>
+          <div class="expr-info">
+            <div class="expr-num">02 / 05</div>
+            <span class="expr-emoji-big">😤</span>
+            <div class="expr-name">Annoyed</div>
+            <p class="expr-desc">เมื่อเจอ Conflict หรือคำพูดที่ขัดแย้ง MewChan จะแสดงออกว่าไม่พอใจ แต่ยังคงสุภาพ</p>
+            <div class="expr-trigger"><span>Conflict Event</span><span>Caution สูง</span></div>
+          </div>
+        </div>
+
+        <div class="expr-slide" data-idx="2">
+          <div class="expr-img-box">
+            <img src="photo/Excited.png" alt="Mew-chan Excited Expression">
+          </div>
+          <div class="expr-info">
+            <div class="expr-num">03 / 05</div>
+            <span class="expr-emoji-big">✨</span>
+            <div class="expr-name">Excited</div>
+            <p class="expr-desc">เมื่อได้รับคำชมหรือ Support Event ที่มี salience สูง — ดวงตาของเธอจะเปล่งประกายเป็นพิเศษ</p>
+            <div class="expr-trigger"><span>Support Event</span><span>Happiness สูง</span><span>✦ Sparkle</span></div>
+          </div>
+        </div>
+
+        <div class="expr-slide" data-idx="3">
+          <div class="expr-img-box">
+            <img src="photo/Hurt.png" alt="Mew-chan Hurt Expression">
+          </div>
+          <div class="expr-info">
+            <div class="expr-num">04 / 05</div>
+            <span class="expr-emoji-big">😟</span>
+            <div class="expr-name">Hurt</div>
+            <p class="expr-desc">เมื่อถูกพูดจาหยาบคาย หรือเจอ Hurt Event — เธอจะแสดงความเจ็บปวดออกมา BiasState จะเปลี่ยนตาม</p>
+            <div class="expr-trigger"><span>Hurt Event</span><span>Trust ลด</span><span>Defensiveness เพิ่ม</span></div>
+          </div>
+        </div>
+
+        <div class="expr-slide" data-idx="4">
+          <div class="expr-img-box">
+            <img src="photo/Angry.png" alt="Mew-chan Angry Expression">
+          </div>
+          <div class="expr-info">
+            <div class="expr-num">05 / 05</div>
+            <span class="expr-emoji-big">😠</span>
+            <div class="expr-name">Angry</div>
+            <p class="expr-desc">ระดับสูงสุดของ Defensive — เมื่อ Unsafe Event เกิดขึ้น เธอจะปิดกั้นตัวเองและตอบสนองด้วยความระวัง</p>
+            <div class="expr-trigger"><span>Unsafe Event</span><span>Defensiveness สูงมาก</span><span>Caution MAX</span></div>
+          </div>
+        </div>
+
+      </div><!-- end slider -->
+
+      <div class="expr-nav">
+        <button class="expr-arrow" onclick="exprPrev()">←</button>
+        <div class="expr-dots" id="expr-dots">
+          <div class="expr-dot active" onclick="exprGo(0)"></div>
+          <div class="expr-dot" onclick="exprGo(1)"></div>
+          <div class="expr-dot" onclick="exprGo(2)"></div>
+          <div class="expr-dot" onclick="exprGo(3)"></div>
+          <div class="expr-dot" onclick="exprGo(4)"></div>
+        </div>
+        <button class="expr-arrow" onclick="exprNext()">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="sec">
+    <div class="reveal"><div class="sec-label">AI System</div></div>
+    <div class="reveal d1"><h2 class="sec-title">ระบบ AI ที่ซับซ้อน</h2></div>
+    <div class="reveal d2"><p class="sec-sub">เบื้องหลัง MewChan มีระบบที่ทำงานร่วมกันหลายชั้น ทำให้เธอรู้สึกมีชีวิตชีวาจริงๆ</p></div>
+    <div class="feat-grid">
+      <div class="feat-card reveal d1">
+        <div class="feat-icon">💭</div>
+        <div class="feat-title">Emotion Engine</div>
+        <div class="feat-desc">ระบบอารมณ์ที่คำนวณจาก BiasState แบบ real-time ทุก interaction ส่งผลต่อความรู้สึกของเธอ</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#e8779e,#f2a7c3)" data-w="88%"></div></div>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon">🧠</div>
+        <div class="feat-title">LLM Brain</div>
+        <div class="feat-desc">ใช้ภาษาโมเดล AI เป็น Brain หลัก ผสานกับ Persona และ Tone Modifier ให้เธอพูดได้เป็นธรรมชาติ</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#a8c8f0,#9eecd4)" data-w="92%"></div></div>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon">💾</div>
+        <div class="feat-title">Memory Store</div>
+        <div class="feat-desc">ความทรงจำที่มี salience decay — เธอจำสิ่งที่สำคัญได้ และลืมสิ่งที่ไม่สำคัญไปตามเวลา</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#f5d87a,#9eecd4)" data-w="75%"></div></div>
+      </div>
+      <div class="feat-card reveal d1">
+        <div class="feat-icon">🎭</div>
+        <div class="feat-title">Adaptive Persona</div>
+        <div class="feat-desc">บุคลิก 5 แบบ — Cute, Serious, Teasing, Protective, Neutral เลือกได้ตาม BiasState</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#f2a7c3,#a8c8f0)" data-w="82%"></div></div>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon">🔍</div>
+        <div class="feat-title">Self Awareness</div>
+        <div class="feat-desc">เธอรู้จักตัวเอง — ระบบ D2.4 ทำให้เธอสามารถอธิบายสภาวะภายในของตัวเองได้</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#9eecd4,#f5d87a)" data-w="68%"></div></div>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon">🎌</div>
+        <div class="feat-title">Live2D Integration</div>
+        <div class="feat-desc">โมเดล Live2D คุณภาพสูง พร้อม expression หลายแบบ ทำงานร่วมกับ Unity อย่างลงตัว</div>
+        <div class="feat-bar"><div class="feat-fill" style="width:0%;background:linear-gradient(90deg,#f5d87a,#e8779e)" data-w="95%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONA -->
+<section id="persona" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
+  <div class="sec">
+    <div class="reveal"><div class="sec-label">Persona System</div></div>
+    <div class="reveal d1"><h2 class="sec-title">บุคลิกที่เปลี่ยนได้</h2></div>
+    <div class="reveal d2"><p class="sec-sub">MewChan ไม่ได้มีบุคลิกเดียว — เธอปรับตัวตามความสัมพันธ์ที่สะสมกับผู้ใช้แต่ละคน</p></div>
+    <div class="persona-strip reveal">
+      <div class="pers-card active"><div class="pers-emoji">🐱</div><div class="pers-name">Cute</div><div class="pers-desc">อบอุ่น สดใส พูดเล่น เมื่อ Warmth+Trust สูง</div></div>
+      <div class="pers-card"><div class="pers-emoji">📚</div><div class="pers-name">Serious</div><div class="pers-desc">ตรงไปตรงมา มีเหตุผล เมื่อ Caution สูง</div></div>
+      <div class="pers-card"><div class="pers-emoji">😏</div><div class="pers-name">Teasing</div><div class="pers-desc">ชอบแกล้งนิดๆ แต่ไม่หยาบคาย</div></div>
+      <div class="pers-card"><div class="pers-emoji">🛡</div><div class="pers-name">Protective</div><div class="pers-desc">ห่วงใย ดูแล เมื่อ Defensiveness สูง</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec">
+    <div class="about-grid">
+      <div class="about-logo-wrap reveal">
+        <img class="about-logo" src="photo/Meowgic.png" alt="Meowgic Logo in About Section">
+      </div>
+      <div class="about-text reveal d2">
+        <div class="sec-label">About</div>
+        <h2 class="sec-title">Meowgic Studio</h2>
+        <p class="about-desc">Meowgic คือ studio เล็กๆ ที่มุ่งสร้างตัวละคร AI ที่มีความเป็นมนุษย์มากขึ้น ผสานศิลปะ เทคโนโลยี และความคิดสร้างสรรค์เข้าด้วยกัน<br><br>MewChan เป็นโปรเจคแรกของ Meowgic — ยังอยู่ระหว่างพัฒนา แต่มีแผนในอนาคตที่จะรองรับ Live2D แบบ interactive เต็มรูปแบบ</p>
+        <div class="about-chips">
+          <span class="achip">Unity</span><span class="achip">C#</span><span class="achip">Live2D</span>
+          <span class="achip">AI / LLM</span><span class="achip">Game Dev</span><span class="achip">ไทย 🇹🇭</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="ct-label reveal">Contact</div>
+      <h2 class="ct-title reveal d1">ติดต่อ<br>Meowgic</h2>
+      <p class="ct-sub reveal d2">สนใจโปรเจค? อยากร่วมงาน?<br>หรือแค่อยากคุยกับ MewChan?<br>ติดต่อมาได้เลยครับ 🐱</p>
+    </div>
+    <div class="ct-cards reveal d1">
+      <a class="ct-card" href="mailto:meowgicofficial.contact@gmail.com">
+        <div class="ct-icon" style="background:rgba(242,167,195,.15)">📨</div>
+        <div><div class="ct-lbl">Business Email</div><div class="ct-val">meowgicofficial.contact@gmail.com</div></div>
+      </a>
+      <a class="ct-card" href="tel:1622762">
+        <div class="ct-icon" style="background:rgba(93,200,164,.15)">📱</div>
+        <div><div class="ct-lbl">Phone</div><div class="ct-val">xxx-xxx-xxxx</div></div>
+      </a>
+      <a class="ct-card" href="https://www.tiktok.com/@meowgic_official" target="_blank">
+        <div class="ct-icon" style="background:rgba(245,216,122,.15)">🎵</div>
+        <div><div class="ct-lbl">TikTok</div><div class="ct-val">@meowgic_official</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo"><img src="photo/Meowgic.png" alt="Meowgic Logo"></div>
+  <div>© 2025 Meowgic · MewChan AI Companion</div>
+  <div>Developed by Pichawat Noonurak (RMUTT Business Computer)</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
