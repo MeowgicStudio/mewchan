@@ -403,41 +403,39 @@ function initMobileKeyboardFix(){
   if(!isMobile) return;
 
   const popup = document.getElementById('ai-popup');
-  const input = document.getElementById('ap-input');
 
-  // เมื่อ keyboard ขึ้น
-  input.addEventListener('focus', () => {
-    setTimeout(() => {
-      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-      const fullH = window.screen.height;
-      const keyboardH = fullH - vh;
-
-      if(keyboardH > 100){
-        // keyboard ขึ้นแล้ว ให้ popup ขยับขึ้น
-        popup.style.bottom = keyboardH + 'px';
-        popup.style.height = (vh * 0.55) + 'px';
-      }
-    }, 300);
-  });
-
-  // เมื่อ keyboard ลง
-  input.addEventListener('blur', () => {
-    setTimeout(() => {
-      popup.style.bottom = '0px';
-      popup.style.height = '50vh';
-    }, 200);
-  });
-
-  // ใช้ visualViewport API ถ้ามี (แม่นยำกว่า)
   if(window.visualViewport){
     window.visualViewport.addEventListener('resize', () => {
       if(!aiOpen) return;
-      const vh = window.visualViewport.height;
-      const offsetY = window.visualViewport.offsetTop;
-      popup.style.bottom = '0px';
-      popup.style.top = 'auto';
-      popup.style.height = (vh * 0.55) + 'px';
-      popup.style.transform = 'none';
+      const vvHeight = window.visualViewport.height;
+      const windowHeight = window.innerHeight;
+      const keyboardHeight = windowHeight - vvHeight;
+
+      if(keyboardHeight > 100){
+        popup.style.bottom = keyboardHeight + 'px';
+        popup.style.height = (vvHeight * 0.55) + 'px';
+      } else {
+        popup.style.bottom = '0px';
+        popup.style.height = '55vh';
+      }
+    });
+  } else {
+    // fallback สำหรับ browser เก่า
+    const input = document.getElementById('ap-input');
+    input.addEventListener('focus', () => {
+      setTimeout(() => {
+        const keyboardH = window.screen.height - window.innerHeight;
+        if(keyboardH > 100){
+          popup.style.bottom = keyboardH + 'px';
+          popup.style.height = (window.innerHeight * 0.55) + 'px';
+        }
+      }, 300);
+    });
+    input.addEventListener('blur', () => {
+      setTimeout(() => {
+        popup.style.bottom = '0px';
+        popup.style.height = '55vh';
+      }, 200);
     });
   }
 }
