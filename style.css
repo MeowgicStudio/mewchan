@@ -73,9 +73,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
   0%,100%{transform:translateX(-50%) scale(1);opacity:.7}
   50%{transform:translateX(-50%) scale(1.1);opacity:1}}
 .model-img{position:relative;z-index:2;max-height:580px;max-width:100%;
-  object-fit:contain;animation:model-float 4s ease-in-out infinite;
+  object-fit:contain;
   filter:drop-shadow(0 20px 60px rgba(232,119,158,0.3));}
-@keyframes model-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
 /* AI ORB */
 #ai-orb{

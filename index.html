@@ -3,17 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO -->
 <title>MewChan — AI Companion · Meowgic</title>
-<link rel="icon" type="image/jpg" href="Logo.jpg">
-<link rel="stylesheet" href="style.css">
-<!-- บังคับไม่ให้ cache -->
+<meta name="description" content="MewChan ตัวละคร AI สาวน้อยแมวจาก Meowgic Studio มีอารมณ์ที่เปลี่ยนแปลง ความทรงจำที่สะสม และบุคลิกที่พัฒนาตามผู้ใช้แต่ละคน">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Pichawat Noonurak - Meowgic Studio">
+<meta name="keywords" content="MewChan, Meowgic, AI Companion, Live2D, Unity, AI Character, มิวจัง">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="MewChan — AI Companion · Meowgic">
+<meta property="og:description" content="ตัวละคร AI ที่ไม่ใช่แค่โปรแกรม — มีอารมณ์ ความทรงจำ และบุคลิกที่พัฒนาตามผู้ใช้">
+<meta property="og:image" content="photo/mew.png">
+<meta property="og:url" content="https://meowgicstudio.github.io/MewChan/">
+<meta property="og:site_name" content="Meowgic Studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MewChan — AI Companion · Meowgic">
+<meta name="twitter:description" content="ตัวละคร AI ที่ไม่ใช่แค่โปรแกรม — มีอารมณ์ ความทรงจำ และบุคลิกที่พัฒนาตามผู้ใช้">
+<meta name="twitter:image" content="photo/mew.png">
+
+<!-- Cache -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-<!-- บอก browser ว่าเป็น mobile web app -->
+<!-- Mobile -->
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#e8779e">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpg" href="photo/logo.jpg">
+<link rel="apple-touch-icon" href="photo/logo.jpg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=DM+Sans:wght@400;500;600&family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="petals"></div>
@@ -39,21 +72,21 @@
       <div class="ap-name">MewChan AI</div>
       <div class="ap-sub">ถามได้เลย หรือพิมว่า "แนะนำทุกหน้า"</div>
     </div>
-    <button class="ap-close" onclick="toggleAI()">✕</button>
+    <button class="ap-close" onclick="toggleAI()" aria-label="ปิด">✕</button>
   </div>
   <div class="ap-msgs" id="ap-msgs">
     <div class="apmsg ai"><div class="apbubble">สวัสดีค่ะ~ 🌸 จะถามเรื่อง MewChan หรือจะให้พาทัวร์เว็บก็ได้นะคะ!</div></div>
   </div>
   <div class="ap-input-row">
-    <input id="ap-input" type="text" placeholder="เช่น: แนะนำทุกหน้า / ไปหน้าระบบ / คุยเล่น" autocomplete="off"/>
-    <button onclick="aiSend()">↑</button>
+    <input id="ap-input" type="text" placeholder="เช่น: แนะนำทุกหน้า / ไปหน้าระบบ / คุยเล่น" autocomplete="off" aria-label="พิมข้อความ"/>
+    <button onclick="aiSend()" aria-label="ส่ง">↑</button>
   </div>
 </div>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="เมนูหลัก">
   <div class="nav-logo">
-    <img src="photo/Meowgic.png" alt="Meowgic Logo">
+    <img src="photo/Meowgic.png" alt="Meowgic Studio Logo">
   </div>
   <ul class="nav-links">
     <li><a href="#expressions">Expressions</a></li>
@@ -65,7 +98,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-label="หน้าแรก">
   <div class="hero-circles"><div class="hc1"></div><div class="hc2"></div><div class="hc3"></div></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -89,13 +122,13 @@
     </div>
     <div class="hero-model">
       <div class="model-glow"></div>
-      <img class="model-img" src="photo/mew.png" alt="MewChan Model">
+      <img class="model-img" src="photo/mew.png" alt="MewChan AI Companion Character">
     </div>
   </div>
 </section>
 
 <!-- EXPRESSIONS SLIDER -->
-<section id="expressions" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
+<section id="expressions" aria-label="อารมณ์ของ MewChan" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
   <div class="sec">
     <div class="reveal"><div class="sec-label">Expressions</div></div>
     <div class="reveal d1"><h2 class="sec-title">อารมณ์ที่หลากหลาย</h2></div>
@@ -106,7 +139,7 @@
 
         <div class="expr-slide active" data-idx="0">
           <div class="expr-img-box">
-            <img src="photo/Normal.png" alt="Mew-chan Normal Expression">
+            <img src="photo/Normal.png" alt="MewChan Normal Expression" loading="lazy">
           </div>
           <div class="expr-info">
             <div class="expr-num">01 / 05</div>
@@ -119,7 +152,7 @@
 
         <div class="expr-slide" data-idx="1">
           <div class="expr-img-box">
-            <img src="photo/Annoyed.png" alt="Mew-chan Annoyed Expression">
+            <img src="photo/Annoyed.png" alt="MewChan Annoyed Expression" loading="lazy">
           </div>
           <div class="expr-info">
             <div class="expr-num">02 / 05</div>
@@ -132,7 +165,7 @@
 
         <div class="expr-slide" data-idx="2">
           <div class="expr-img-box">
-            <img src="photo/Excited.png" alt="Mew-chan Excited Expression">
+            <img src="photo/Excited.png" alt="MewChan Excited Expression" loading="lazy">
           </div>
           <div class="expr-info">
             <div class="expr-num">03 / 05</div>
@@ -145,7 +178,7 @@
 
         <div class="expr-slide" data-idx="3">
           <div class="expr-img-box">
-            <img src="photo/Hurt.png" alt="Mew-chan Hurt Expression">
+            <img src="photo/Hurt.png" alt="MewChan Hurt Expression" loading="lazy">
           </div>
           <div class="expr-info">
             <div class="expr-num">04 / 05</div>
@@ -158,7 +191,7 @@
 
         <div class="expr-slide" data-idx="4">
           <div class="expr-img-box">
-            <img src="photo/Angry.png" alt="Mew-chan Angry Expression">
+            <img src="photo/Angry.png" alt="MewChan Angry Expression" loading="lazy">
           </div>
           <div class="expr-info">
             <div class="expr-num">05 / 05</div>
@@ -169,25 +202,25 @@
           </div>
         </div>
 
-      </div><!-- end slider -->
+      </div>
 
       <div class="expr-nav">
-        <button class="expr-arrow" onclick="exprPrev()">←</button>
+        <button class="expr-arrow" onclick="exprPrev()" aria-label="ก่อนหน้า">←</button>
         <div class="expr-dots" id="expr-dots">
-          <div class="expr-dot active" onclick="exprGo(0)"></div>
-          <div class="expr-dot" onclick="exprGo(1)"></div>
-          <div class="expr-dot" onclick="exprGo(2)"></div>
-          <div class="expr-dot" onclick="exprGo(3)"></div>
-          <div class="expr-dot" onclick="exprGo(4)"></div>
+          <div class="expr-dot active" onclick="exprGo(0)" aria-label="สไลด์ 1"></div>
+          <div class="expr-dot" onclick="exprGo(1)" aria-label="สไลด์ 2"></div>
+          <div class="expr-dot" onclick="exprGo(2)" aria-label="สไลด์ 3"></div>
+          <div class="expr-dot" onclick="exprGo(3)" aria-label="สไลด์ 4"></div>
+          <div class="expr-dot" onclick="exprGo(4)" aria-label="สไลด์ 5"></div>
         </div>
-        <button class="expr-arrow" onclick="exprNext()">→</button>
+        <button class="expr-arrow" onclick="exprNext()" aria-label="ถัดไป">→</button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section id="features">
+<section id="features" aria-label="ระบบ AI">
   <div class="sec">
     <div class="reveal"><div class="sec-label">AI System</div></div>
     <div class="reveal d1"><h2 class="sec-title">ระบบ AI ที่ซับซ้อน</h2></div>
@@ -234,7 +267,7 @@
 </section>
 
 <!-- PERSONA -->
-<section id="persona" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
+<section id="persona" aria-label="ระบบบุคลิก" style="background:linear-gradient(180deg,transparent,rgba(242,167,195,0.06),transparent)">
   <div class="sec">
     <div class="reveal"><div class="sec-label">Persona System</div></div>
     <div class="reveal d1"><h2 class="sec-title">บุคลิกที่เปลี่ยนได้</h2></div>
@@ -244,16 +277,17 @@
       <div class="pers-card"><div class="pers-emoji">📚</div><div class="pers-name">Serious</div><div class="pers-desc">ตรงไปตรงมา มีเหตุผล เมื่อ Caution สูง</div></div>
       <div class="pers-card"><div class="pers-emoji">😏</div><div class="pers-name">Teasing</div><div class="pers-desc">ชอบแกล้งนิดๆ แต่ไม่หยาบคาย</div></div>
       <div class="pers-card"><div class="pers-emoji">🛡</div><div class="pers-name">Protective</div><div class="pers-desc">ห่วงใย ดูแล เมื่อ Defensiveness สูง</div></div>
+      <div class="pers-card"><div class="pers-emoji">😶</div><div class="pers-name">Neutral</div><div class="pers-desc">สมดุล ไม่เอนเอียง เมื่อ BiasState อยู่ในระดับกลาง</div></div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" aria-label="เกี่ยวกับ Meowgic">
   <div class="sec">
     <div class="about-grid">
       <div class="about-logo-wrap reveal">
-        <img class="about-logo" src="photo/Meowgic.png" alt="Meowgic Logo in About Section">
+        <img class="about-logo" src="photo/Meowgic.png" alt="Meowgic Studio Logo" loading="lazy">
       </div>
       <div class="about-text reveal d2">
         <div class="sec-label">About</div>
@@ -269,7 +303,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-label="ติดต่อ">
   <div class="contact-inner">
     <div>
       <div class="ct-label reveal">Contact</div>
@@ -285,7 +319,7 @@
         <div class="ct-icon" style="background:rgba(93,200,164,.15)">📱</div>
         <div><div class="ct-lbl">Phone</div><div class="ct-val">xxx-xxx-xxxx</div></div>
       </a>
-      <a class="ct-card" href="https://www.tiktok.com/@meowgic_official" target="_blank">
+      <a class="ct-card" href="https://www.tiktok.com/@meowgic_official" target="_blank" rel="noopener noreferrer">
         <div class="ct-icon" style="background:rgba(245,216,122,.15)">🎵</div>
         <div><div class="ct-lbl">TikTok</div><div class="ct-val">@meowgic_official</div></div>
       </a>
@@ -294,8 +328,8 @@
 </section>
 
 <footer>
-  <div class="foot-logo"><img src="photo/Meowgic.png" alt="Meowgic Logo"></div>
-  <div>© 2025 Meowgic · MewChan AI Companion</div>
+  <div class="foot-logo"><img src="photo/Meowgic.png" alt="Meowgic Studio Logo" loading="lazy"></div>
+  <div>© 2026 Meowgic · MewChan AI Companion</div>
   <div>Developed by Pichawat Noonurak (RMUTT Business Computer)</div>
 </footer>
 
