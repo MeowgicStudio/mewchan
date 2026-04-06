@@ -196,7 +196,7 @@ const sectionInfo = [
     id: 'persona',
     name: 'หน้า Persona',
     keywords: ['persona','บุคลิก','หน้าเพอร์โซนา','หน้าpersona','หน้า persona'],
-    desc: 'หน้านี้แสดงบุคลิก 4 แบบของ MewChan ได้แก่ Cute, Serious, Teasing และ Protective ซึ่งเปลี่ยนตามความสัมพันธ์กับผู้ใช้ค่ะ 🎭'
+    desc: 'หน้านี้แสดงบุคลิก 5 แบบของ MewChan ได้แก่ Cute, Serious, Teasing, Protective และ Neutral ซึ่งเปลี่ยนตาม BiasState ที่สะสมจากการปฏิสัมพันธ์ค่ะ 🎭'
   },
   {
     id: 'about',
